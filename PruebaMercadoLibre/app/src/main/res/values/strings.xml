@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Prueba MercadoLibre</string>
+    <string name="buscar">BUSCAR</string>
+    <string name="ingrese_un_texto_para_buscar">Ingrese un texto para buscar</string>
+    <string name="title">Titulo</string>
+    <string name="id">ID</string>
+    <string name="_9999999">9999999</string>
+    <string name="ars">ARS</string>
+    <string name="imagen_de_articulo">Imagen de articulo</string>
+    <string name="city">City</string>
+    <string name="boton_de_busqueda_de_articulos">Boton de busqueda de articulos</string>
+    <string name="logo_de_meli">Logo de MeLi</string>
+</resources>
