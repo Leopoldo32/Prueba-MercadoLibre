@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.com.rhonaldelgado.mercadolibre">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,12 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.DetailActivity" android:parentActivityName=".ui.SearchResultActivity">
+        <activity
+            android:name=".ui.DetailProductActivity"
+            android:label="@string/title_activity_detail_product"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".ui.SearchResultActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.SearchResultActivity" />
         </activity>
-        <activity android:name=".ui.SearchResultActivity" />
+        <activity
+            android:name=".ui.DetailActivity"
+            android:parentActivityName=".ui.SearchResultActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.SearchResultActivity" />
+        </activity>
+        <activity android:name=".ui.SearchResultActivity" android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" /></activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

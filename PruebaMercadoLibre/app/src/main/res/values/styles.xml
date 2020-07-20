@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorAccent</item>
@@ -11,19 +11,52 @@
 
     </style>
 
-
-
     <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 
-    <style name="Widget.App.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textAppearance">@style/TextAppearance.App.Button</item>
-        <item name="android:colorBackground">@color/colorPrimary</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
+
+    <style name="EditTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/colorAccent</item>
+
+        <item name="boxStrokeWidth">0.5dp</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxCornerRadiusTopStart">15dp</item>
+        <item name="boxCornerRadiusBottomEnd">15dp</item>
+
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputLayout</item>
 
     </style>
 
+
+    <style name="ThemeOverlay.App.TextInputLayout" parent="">
+        <item name="colorPrimary">@color/colorAccent</item>  //Activated color
+        <item name="colorOnSurface">@color/colorAccent</item>    //Normal color
+        <item name="colorError">@color/accentRed</item>        //Error color
+
+
+        <!--Note: When setting a materialThemeOverlay on a custom TextInputLayout style, don’t forget to set editTextStyle to either a @style/Widget.MaterialComponents.TextInputEditText.* style or to a custom one that inherits from that.
+        The TextInputLayout styles set materialThemeOverlay that overrides editTextStyle with the specific TextInputEditText style needed. Therefore, you don’t need to specify a style tag on the edit text.-->
+        <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>

@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,13 +28,39 @@ import co.com.rhonaldelgado.mercadolibre.viewmodel.MeLiViewModel;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private MeLiViewModel meLiViewModel;
-
+    private EditText searchText;
+    private String item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         Button searchButton = findViewById(R.id.searchButton);
+        searchText = findViewById(R.id.searchText);
+
+
+        searchText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                item = searchText.getText().toString();
+
+                if(item.length() > 0){
+                    searchButton.setEnabled(true);
+                }else{
+                    searchButton.setEnabled(false);
+                }
+
+            }
+
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
         searchButton.setOnClickListener(this);
     }
 
@@ -40,13 +68,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final ProgressDialog pd = new ProgressDialog(MainActivity.this);
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pd.setTitle("Buscando Articulos");
-        pd.setMessage("Buscando.........");
+        pd.setMessage("Buscando...");
         pd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFD4D9D0")));
         pd.setIndeterminate(false);
         pd.show();
 
-        EditText searchText = findViewById(R.id.searchText);
-        String item = searchText.getText().toString();
+
+
         meLiViewModel = new ViewModelProvider(this).get(MeLiViewModel.class);
         meLiViewModel.deleteAllResults();
         meLiViewModel.getAllSearchData(item).observe(this, new Observer<List<Results>>() {

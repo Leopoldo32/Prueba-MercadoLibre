@@ -33,8 +33,14 @@ public class SearchResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
         //getSupportActionBar().setTitle(Html.fromHtml("<font color='#313E71'>"+"Resultado de busqueda"+"</font>"));
-        getSupportActionBar().setTitle("Resultado de busqueda");
 
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Resultado de busqueda");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.back3);
+
+        }
 
         meLiViewModel = new ViewModelProvider(this).get(MeLiViewModel.class);
         srRecyclerView = findViewById(R.id.recyclerResult);
@@ -57,7 +63,7 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     private void goToDetailActivity(int idRoom){
-        Intent intent = new Intent(SearchResultActivity.this, DetailActivity.class);
+        Intent intent = new Intent(SearchResultActivity.this, DetailProductActivity.class);
         intent.putExtra("idRoom", idRoom);
         startActivityForResult(intent, Constants.SEARCH_RESULT_ACTIVITY_REQUEST_CODE);
     }
